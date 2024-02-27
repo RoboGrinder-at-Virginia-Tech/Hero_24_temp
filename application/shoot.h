@@ -74,9 +74,9 @@
 #define SWITCH_TRIGGER_OFF          1
 
 //卡单时间 以及反转时间
-#define BLOCK_TRIGGER_SPEED         0.1f//0.09f //1.0f
-#define BLOCK_TIME                  200 //500 //700
-#define REVERSE_TIME                200 //500
+#define BLOCK_TRIGGER_SPEED         3.0f //0.1f//0.09f //1.0f
+#define BLOCK_TIME                  800 //200 //500 //700
+#define REVERSE_TIME                300 //200 //500
 #define REVERSE_SPEED_LIMIT         12.0f //13.0f
 
 #define PI_FOUR                     0.78539816339744830961566084581988f
@@ -91,11 +91,14 @@ Hero; 拨盘3个洞, 2pi/3 = 2.094395102f; 为了保证不过冲 set = 2.05f
 
 2023 new Hero 1-27-2023 拨盘有5个洞 2pi/4 = 1.570796327
 
+28:74 拨弹盘齿轮比, 1:19 M3508减速比
+2024 中心供弹 英雄 拨盘有6个洞 2pi/4 * (74/28) * (19 / 1) = 52.5842704
+
 测试用旋转角度180度, 2pi/2 = pi = 3.1415926f; 
 1.5PI = 4.712388980f
 2.0PI = 6.283185307f
 */
-#define PI_TEN                      	1.570796327f //1.5707f //1.52f //1.57f//0.67f
+#define PI_TEN                      	52.5842704 //1.570796327f //1.5707f //1.52f //1.57f//0.67f
 
 #define EJECT_AMMO_ONCE_ANGLE         +1.39f//+1.047197551f
 #define AMMO_TURN_BACK_ANGLE          +0.52f
@@ -138,25 +141,25 @@ Original PID parameter
     float kd)
 */
 //42mm 拨弹轮电机PID 外环PID
-#define TRIGGER_ANGLE_PID_42mm_OUTER_KP        30.0f //25.0f //8.0f
+#define TRIGGER_ANGLE_PID_42mm_OUTER_KP        20.0f //30.0f //25.0f //8.0f
 #define TRIGGER_ANGLE_PID_42mm_OUTER_KI        0.0f //0.2f
-#define TRIGGER_ANGLE_PID_42mm_OUTER_KD        0.8f //0.0f
+#define TRIGGER_ANGLE_PID_42mm_OUTER_KD        0.0f //0.8f //0.0f
 
-#define TRIGGER_BULLET_PID_42mm_OUTER_MAX_OUT  50.0f //40.0f //30.0f
+#define TRIGGER_BULLET_PID_42mm_OUTER_MAX_OUT  30.0f //50.0f //40.0f //30.0f
 #define TRIGGER_BULLET_PID_42mm_OUTER_MAX_IOUT 1.5f
 /*
 外环的输出是内环的输入 内环输入单位是rad/s 
 */
 //拨弹轮电机PID M3508 42mm
 #define TRIGGER_SPEED_IN_PID_KP        800.0f //600.0f //800.0f//3600.0f
-#define TRIGGER_SPEED_IN_PID_KI        1.0f //0.5f//20.0f
-#define TRIGGER_SPEED_IN_PID_KD        0.5f
+#define TRIGGER_SPEED_IN_PID_KI        0.5f//1.0f
+#define TRIGGER_SPEED_IN_PID_KD        0.0f //0.5f
 
-#define TRIGGER_BULLET_PID_MAX_OUT  30000.0f //10000.0f //30000
-#define TRIGGER_BULLET_PID_MAX_IOUT 10000.0f //9000.0f//10000.0f 
+#define TRIGGER_BULLET_PID_MAX_OUT  10000.0f //30000.0f //10000.0f //30000
+#define TRIGGER_BULLET_PID_MAX_IOUT 5000.0f //10000.0f //9000.0f//10000.0f 
 
-#define TRIGGER_READY_PID_MAX_OUT   30000.0f
-#define TRIGGER_READY_PID_MAX_IOUT  8000.0f//7000.0f
+#define TRIGGER_READY_PID_MAX_OUT   10000.0f //30000.0f
+#define TRIGGER_READY_PID_MAX_IOUT  5000.0f //8000.0f//7000.0f
 
 /*直接 - 裁判系统 原始值是#define SHOOT_HEAT_REMAIN_VALUE     30*/
 #define SHOOT_HEAT_REMAIN_VALUE     99 //100 //60//5-24之前:40//30
